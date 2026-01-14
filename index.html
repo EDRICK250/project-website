@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NovaTech Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* ===== QUICK MENU ICON EFFECTS ===== */
+.quick-menu span:hover {
+    transform: scale(1.3);
+    transition: 0.3s ease;
+    color: #ffd700;
+}
+
+/* ===== MESSAGE & NOTIFICATION BOX STYLING ===== */
+#messagesBox, #notificationsBox {
+    animation: slideIn 0.4s ease;
+    border-left: 5px solid #38ada9;
+}
+
+/* Slide animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Headings inside message boxes */
+#messagesBox h3, #notificationsBox h3 {
+    color: #0a3d62;
+    margin-top: 0;
+}
+
+/* Messages text */
+#messagesBox p, #notificationsBox p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Close button styling */
+#messagesBox button, #notificationsBox button {
+    background: #0a3d62;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#messagesBox button:hover, #notificationsBox button:hover {
+    background: #38ada9;
+}
+
+/* Dark mode for popup boxes */
+.dark #messagesBox,
+.dark #notificationsBox {
+    background: #1e1e1e;
+    color: white;
+    border-left: 5px solid #38ada9;
+}
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, #0a3d62, #38ada9);
+            color: white;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 5px 12px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ===== APP-LIKE MENU ===== */
+        .quick-menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .quick-menu span {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0a3d62;
+            margin-bottom: 20px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            background: white;
+        }
+
+        .hero img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            background: #0a3d62;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        /* ===== GRID / CARDS ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+        }
+
+        article img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== TABLE ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #0a3d62;
+            color: white;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        button.submit {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            background: #38ada9;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a3d62;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        /* ===== DARK MODE ===== */
+        .dark {
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark article,
+        .dark .contact-box,
+        .dark section {
+            background: #1e1e1e;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div>
+            <h1>NovaTech Solutions</h1>
+            <small>Smart Digital Services</small>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- App-like quick access -->
+       <div class="quick-menu">
+    <span title="Messages" onclick="openMessages()">💬</span>
+    <span title="Appearance" onclick="toggleMode()">🌗</span>
+    <span title="Notifications" onclick="openNotifications()">🔔</span>
+      </div>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero">
+    <h2>Welcome to NovaTech Solutions</h2>
+
+    <p>
+        NovaTech Solutions is a professional technology company that provides
+        website development, mobile app creation, and IT training. We help
+        businesses and students grow through smart digital solutions.
+    </p>
+
+    <!-- Logo / picture placed BELOW the information -->
+    <img src="./Novatech.png" alt="NovaTech Logo" style="width: 450px;px;"> <br>
+     <button onclick="welcome()">Get Started</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        <strong>NovaTech Solutions</strong> is a technology-based company focused on innovation,
+        creativity, and reliable IT services.
+    </p>
+
+    <h3>Our Achievements</h3>
+    <ul>
+        <li>✔ 150+ successful websites delivered</li>
+        <li>✔ Trained over 300 students in IT skills</li>
+        <li>✔ Partnered with local businesses and schools</li>
+    </ul>
+
+    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7"
+         alt="Team work" style="width:100%; border-radius:10px; margin-top:15px;">
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2>Our Services</h2>
+
+    <div class="grid">
+        <article>
+            <img src="./web development.jpg">
+            <h3>Website Development</h3>
+            <p>Responsive and professional websites for businesses.</p>
+            <p><strong>Cost:</strong> $300</p>
+        </article>
+
+        <article>
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
+            <h3>Mobile App Development</h3>
+            <p>Android & iOS applications with modern UI.</p>
+            <p><strong>Cost:</strong> $500</p>
+        </article>
+
+        <article>
+            <img src="./web pic.jpg">
+            <h3>IT Training</h3>
+            <p>Programming, web design, and digital skills training.</p>
+            <p><strong>Cost:</strong> $150</p>
+        </article>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact Us</h2>
+
+    <div class="contact-box">
+        <p><strong>Phone:</strong> 0788302056</p>
+        <p><strong>Email:</strong> novatech@gmail.com</p>
+
+        <form onsubmit="return validateForm()">
+            <label>Name</label>
+            <input type="text" id="name">
+
+            <label>Email</label>
+            <input type="email" id="email">
+
+            <label>Message</label>
+            <textarea rows="4"></textarea>
+
+            <button class="submit" type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <footer>
+    <p><strong>NovaTech Solutions</strong> – Smart Digital Services</p>
+
+    <p>
+        We provide professional website development, mobile app creation, 
+        and IT training to help businesses and students succeed in the digital world.
+    </p>
+
+    <p>
+        📍 Kigali, Rwanda <br>
+        📞 0788302056 <br>
+        📧 novatech@gmail.com
+    </p>
+
+    <p>
+      <p>
+    🌐 Follow us: 
+    <a href="https://www.instagram.com/_e.dr1ck_/" target="_blank" style="color:white; text-decoration:none;">Instagram</a> |
+    <a href="https://wa.me/250788302056" target="_blank" style="color:white; text-decoration:none;">WhatsApp</a>
+</p>
+
+    </p>
+
+    <p style="margin-top:10px;">
+        &copy; 2026 NovaTech Solutions. All Rights Reserved.
+    </p>
+</footer>
+
+</footer>
+
+<script>
+    function welcome() {
+        alert("Welcome to NovaTech Solutions!");
+    }
+
+    function toggleMode() {
+        document.body.classList.toggle("dark");
+    }
+
+    function validateForm() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+        if (name === "" || email === "") {
+            alert("Please fill in all fields.");
+            return false;
+        }
+        alert("Message sent successfully!");
+        return true;
+    }
+    function openMessages() {
+    document.getElementById("messagesBox").style.display = "block";
+    document.getElementById("notificationsBox").style.display = "none";
+}
+
+function openNotifications() {
+    document.getElementById("notificationsBox").style.display = "block";
+    document.getElementById("messagesBox").style.display = "none";
+}
+
+function closeBoxes() {
+    document.getElementById("messagesBox").style.display = "none";
+    document.getElementById("notificationsBox").style.display = "none";
+}
+
+</script>
+<!-- MESSAGE & NOTIFICATION PANELS -->
+<div id="messagesBox" style="display:none; position:fixed; top:80px; right:20px; background:white; padding:20px; border-radius:10px; width:250px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:2000;">
+    <h3>Messages</h3>
+    <p>📩 Welcome to NovaTech Solutions.</p>
+    <p>📩 New training programs are available.</p>
+    <button onclick="closeBoxes()">Close</button>
+</div>
+
+<div id="notificationsBox" style="display:none; position:fixed; top:80px; right:20px; background:white; padding:20px; border-radius:10px; width:250px; box-shadow:0 0 10px rgba(0,0,0,0.2); z-index:2000;">
+    <h3>Notifications</h3>
+    <p>🔔 Website updated successfully.</p>
+    <p>🔔 New service added.</p>
+    <button onclick="closeBoxes()">Close</button>
+</div>
+
+</body>
+</html>
